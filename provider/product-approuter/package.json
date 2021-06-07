@@ -1,0 +1,16 @@
+{
+    "name": "product-service",
+    "version": "1.0.0",
+    "description": "Multitenant Reuse Service - Product service",
+    "scripts": {
+        "start": "node node_modules/@sap/approuter/approuter.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@sap/approuter": "^10.2.0"
+    },
+    "engines": {
+        "node": "14.16.0"
+    }
+}

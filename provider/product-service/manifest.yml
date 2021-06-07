@@ -1,0 +1,16 @@
+applications:
+  - name: product-service
+    path: .
+    buildpacks:
+      - nodejs_buildpack
+    memory: 128M
+    routes:
+        ## You must change "30db1073trial" to your subaccount
+        - route: multitenant-product-service.cfapps.eu10.hana.ondemand.com
+    command: npm start
+    services:
+      - xsuaa
+      - postgresql
+    env:
+      OPTIMIZE_MEMORY: true
+      XS_APP_LOG_LEVEL: "debug"

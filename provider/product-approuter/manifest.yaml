@@ -1,0 +1,33 @@
+applications:
+  - name: product-approuter
+    path: .
+    buildpacks:
+      - nodejs_buildpack
+    memory: 128M
+    command: npm start
+    routes:
+        ## You must change "30db1073trial" to your subaccount
+        - route: 30db1073trial-multitenant-product-approuter.cfapps.eu10.hana.ondemand.com
+    services:
+      - destination
+      - xsuaa
+      - saas-registry
+    env:
+      destinations: >
+        [
+          {
+            "name":"product-service",
+            "url":"https://multitenant-product-service.cfapps.eu10.hana.ondemand.com/",
+            "forwardAuthToken": true
+          }
+        ],
+        [
+          {
+            "name":"product-webapp",
+            "url":"https://multitenant-product-webapp.cfapps.eu10.hana.ondemand.com/",
+            "forwardAuthToken": true
+          }
+        ]
+      OPTIMIZE_MEMORY: true
+      XS_APP_LOG_LEVEL: "debug"
+      TENANT_HOST_PATTERN: "^(.*)-multitenant-product-approuter.cfapps.eu10.hana.ondemand.com"

@@ -1,0 +1,19 @@
+{
+    "welcomeFile": "app/products/",
+    "authenticationMethod": "route",
+    "logout": {
+        "logoutEndpoint": "/do/logout"
+    },
+    "routes": [
+        {
+            "source": "/api",
+            "destination": "product-service",
+            "authenticationType": "xsuaa"
+        },
+        {
+            "source": "/app",
+            "destination": "product-webapp",
+            "authenticationType": "xsuaa"
+        }
+    ]
+}
