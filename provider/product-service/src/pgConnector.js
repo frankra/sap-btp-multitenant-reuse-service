@@ -2,20 +2,29 @@ const { Pool } = require('pg');
 const xsenv = require('@sap/xsenv');
 
 xsenv.loadEnv();
-const services = xsenv.getServices({ "postgresql-db": {name: 'postgresql'}})
+const services = xsenv.getServices({ "postgresql-db": { name: 'postgresql' } })
 const pgCredentials = services['postgresql-db'];
 
 const pool = new Pool({
-  user: pgCredentials.username,
-  host: pgCredentials.hostname,
-  password: pgCredentials.password,
-  port: pgCredentials.port,
-  database: pgCredentials.dbname,
+    user: pgCredentials.username,
+    host: pgCredentials.hostname,
+    password: pgCredentials.password,
+    port: pgCredentials.port,
+    database: pgCredentials.dbname,
 })
 
-pool.query('SELECT NOW()', (err, res) => {
-  console.log(err, res)
-  pool.end()
+pool.query(`
+    CREATE IF NOT EXISTS TABLE products (
+        id number NOT NULL,
+        name text NOT NULL,
+        price decimal NOT NULL,
+        tenant_id number NOT NULL,
+        PRIMARY KEY (id)
+    )
+
+`, (err, res) => {
+    console.log(err, res)
+    pool.end()
 })
 
 module.exports = pool;
