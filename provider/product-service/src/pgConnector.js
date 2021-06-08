@@ -18,15 +18,16 @@ pool.query(`
     CREATE SCHEMA IF NOT EXISTS prod;
 
     CREATE TABLE IF NOT EXISTS prod.products (
-        id integer NOT NULL,
+        id serial NOT NULL,
         name text NOT NULL,
         price decimal NOT NULL,
-        tenant_id string NOT NULL,
+        tenant_id text NOT NULL,
         PRIMARY KEY (id)
     );
 `, (err, res) => {
-    console.log(err, res)
-    pool.end();
+    if (err){
+        console.error(`Error creating schema`, err);
+    }
 })
 
 module.exports = pool;

@@ -1,5 +1,5 @@
 {
-    "welcomeFile": "app/products/",
+    "welcomeFile": "api/products/",
     "authenticationMethod": "route",
     "logout": {
         "logoutEndpoint": "/do/logout"
