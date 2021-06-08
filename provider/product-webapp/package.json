@@ -1,0 +1,15 @@
+{
+  "name": "product-webapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "export PORT=8080 && ./node_modules/serve/bin/serve.js ."
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "serve": "^12.0.0"
+  }
+}

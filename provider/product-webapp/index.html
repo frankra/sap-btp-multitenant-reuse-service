@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+        
+    </head>
+    <body>
+        <div id="app">
+            <div class="w-100">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    New Product
+                  </button>
+            </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Product ID</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="product in products" :key="product.id">
+                        <td>{{product.id}}</td>
+                        <td>{{product.name}}</td>
+                        <td>${{product.price}}</td>
+                        <td><button>Edit</button><button>Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        <!-- Button trigger modal -->
+
+  <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Create Product</h5>
+            <button type="button" class="close" data-dismiss="modal" v-on:click="closeModal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                Name: <input v-model="newProduct.name" placeholder="Name"><br>
+                Price: <input type="number" v-model="newProduct.price" placeholder="Price">
+            </div>  
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" v-on:click="closeModal" >Cancel</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" v-on:click="create" >Create</button>
+            </div>
+        </div>
+        </div>
+    </div>
+        </div>
+
+
+    </body>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+
+        const app = new Vue({
+            el: '#app',
+            data: {
+                products: [],
+                newProduct: {}
+            },
+            methods: {
+                load: async function(event){
+                    const res = await fetch('/api/products');
+                    const data = await res.json();
+                    this.products = data;
+                },
+                create: async function(event){
+                    await fetch('/api/products',{
+                        method: 'POST',
+                        // cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                        // credentials: 'same-origin', // include, *same-origin, omit
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(this.newProduct)
+                    });
+                    this.newProduct = {};
+                    this.load();
+                },
+                closeModal: function(){
+                    this.newProduct = {};
+                }
+            }
+        })
+        app.load();
+    </script>
+</html>

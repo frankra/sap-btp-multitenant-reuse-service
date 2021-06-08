@@ -1,0 +1,9 @@
+applications:
+  - name: product-webaapp
+    buildpacks:
+      - staticfile_buildpack
+    instances: 1
+    memory: 256M
+    routes:
+        ## You must change "30db1073trial" to your subaccount
+        - route: multitenant-product-webapp.cfapps.eu10.hana.ondemand.com
