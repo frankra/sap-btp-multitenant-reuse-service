@@ -1,16 +1,14 @@
-
 const express = require('express');
 const pool = require('./pgConnector');
+const { start } = require('./controller');
 const cfenv = require("cfenv")
-const appEnv = cfenv.getAppEnv()
+const appEnv = cfenv.getAppEnv();
 
 const app = express();
 const port = 3000 | process.env.PORT;
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-});
+start(app, pool);
 
 app.listen(appEnv.port, appEnv.bind, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+    console.log(`Example app listening at http://localhost:${port}`)
 });

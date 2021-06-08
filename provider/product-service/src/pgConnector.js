@@ -13,18 +13,20 @@ const pool = new Pool({
     database: pgCredentials.dbname,
 })
 
+//Create tables
 pool.query(`
-    CREATE IF NOT EXISTS TABLE products (
-        id number NOT NULL,
+    CREATE SCHEMA IF NOT EXISTS prod;
+
+    CREATE TABLE IF NOT EXISTS prod.products (
+        id integer NOT NULL,
         name text NOT NULL,
         price decimal NOT NULL,
-        tenant_id number NOT NULL,
+        tenant_id string NOT NULL,
         PRIMARY KEY (id)
-    )
-
+    );
 `, (err, res) => {
     console.log(err, res)
-    pool.end()
+    pool.end();
 })
 
 module.exports = pool;

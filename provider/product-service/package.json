@@ -5,14 +5,17 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:pg": "docker run --name product-pg -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@sap/xsenv": "^3.1.0",
+    "@sap/xssec": "^3.2.1",
     "cfenv": "^1.2.4",
     "express": "^4.17.1",
+    "passport": "^0.4.1",
     "pg": "^8.6.0"
   }
 }

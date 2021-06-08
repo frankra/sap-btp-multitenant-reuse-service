@@ -26,4 +26,5 @@ cf create-service saas-registry application saas-registry -c '{
         "onUnSubscriptionAsync": false,
         "callbackTimeoutMillis": 300000
     }
-}'
+}' &&
+cf create-service destination lite destination

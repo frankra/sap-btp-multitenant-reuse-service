@@ -19,9 +19,7 @@ applications:
             "name":"product-service",
             "url":"https://multitenant-product-service.cfapps.eu10.hana.ondemand.com/",
             "forwardAuthToken": true
-          }
-        ],
-        [
+          },
           {
             "name":"product-webapp",
             "url":"https://multitenant-product-webapp.cfapps.eu10.hana.ondemand.com/",

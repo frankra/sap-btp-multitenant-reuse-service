@@ -1,0 +1,113 @@
+{   
+    "TENANT_HOST_PATTERN": "^(.*)\\.localhost",
+    "VCAP_SERVICES": {
+        "destination": [
+            {
+                "binding_guid": "4a29f32b-b622-4137-b7a8-a8d107774b50",
+                "binding_name": null,
+                "credentials": {
+                    "clientid": "sb-clone705104faed184b25b962dc1d38066f76!b90201|destination-xsappname!b404",
+                    "clientsecret": "4a29f32b-b622-4137-b7a8-a8d107774b50$xbGdL-yB2VaFpPfeZdzJkjWYIe0CW6qiMwMldI91wyE=",
+                    "identityzone": "30db1073trial",
+                    "instanceid": "705104fa-ed18-4b25-b962-dc1d38066f76",
+                    "tenantid": "00b488b2-59ba-4987-88ca-0a70957cf9de",
+                    "tenantmode": "dedicated",
+                    "uaadomain": "authentication.eu10.hana.ondemand.com",
+                    "uri": "https://destination-configuration.cfapps.eu10.hana.ondemand.com",
+                    "url": "https://30db1073trial.authentication.eu10.hana.ondemand.com",
+                    "verificationkey": "-----BEGIN PUBLIC KEY-----MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA387Bgq0ZJdVZTEdh369iSGzJ4+g6z9jyKstxBj9odhViyR3b3Loqu/msWyk/fHA2/U2P56e6ACqbfQLmzctstiwhWFKNJumhf5KM8utd4iicyaUBeqqMAheFv/ogX/DFI86dcDqZO1Ai1Rx1hiBA/f9JLxzb0z9YBT7VSnqnCWYaL2MmuCN3A6USadFNai7Tv0tz5mouQ6iuDUObb9qM85R41aDYLnaQ3YcgVfus7WyGHhVMTwxB+lKKGvlyP400p6lOB3XE0TJyfSO4IeFZgdrGvMRqOk1vP3COSvZcLYcdnCu1U1ruZZicjRjHRBnI524aZQk8A8uPgE8Jugli/wIDAQAB-----END PUBLIC KEY-----",
+                    "xsappname": "clone705104faed184b25b962dc1d38066f76!b90201|destination-xsappname!b404"
+                },
+                "instance_guid": "705104fa-ed18-4b25-b962-dc1d38066f76",
+                "instance_name": "destination",
+                "label": "destination",
+                "name": "destination",
+                "plan": "lite",
+                "provider": null,
+                "syslog_drain_url": null,
+                "tags": [
+                    "destination",
+                    "conn",
+                    "connsvc"
+                ],
+                "volume_mounts": []
+            }
+        ],
+        "saas-registry": [
+            {
+                "binding_guid": "4f112eb9-069a-469e-bc07-20a04b5854c4",
+                "binding_name": null,
+                "credentials": {
+                    "apiurl": "https://api.authentication.eu10.hana.ondemand.com",
+                    "appName": "multitenant-product-reuse-service",
+                    "appUrls": "{\"getDependencies\":\"https://30db1073trial-multitenant-product-approuter.cfapps.sap.hana.ondemand.com/callback/v1.0/dependencies\",\"onSubscription\":\"https://30db1073trial-multitenant-product-approuter.cfapps.sap.hana.ondemand.com/callback/v1.0/tenants/{tenantId}\",\"onSubscriptionAsync\":false,\"onUnSubscriptionAsync\":false,\"onUpdateSubscriptionParametersAsync\":false,\"callbackTimeoutMillis\":300000,\"runGetDependenciesOnAsyncCallback\":false}",
+                    "category": "Test Application",
+                    "clientid": "sb-multitenant-product-reuse-service-clone!b90201|lps-registry-broker!b14",
+                    "clientsecret": "4f112eb9-069a-469e-bc07-20a04b5854c4$EudoQkRp4jm0UeludC156jr5-T9EsP7DBvf4QFX98_4=",
+                    "credential-type": "binding-secret",
+                    "description": "Testing Multitenant Reuse Service",
+                    "display_name": "Multitenant Product Service",
+                    "identityzone": "30db1073trial",
+                    "identityzoneid": "00b488b2-59ba-4987-88ca-0a70957cf9de",
+                    "saas_registry_url": "https://saas-manager.cfapps.eu10.hana.ondemand.com",
+                    "sburl": "https://internal-xsuaa.authentication.eu10.hana.ondemand.com",
+                    "subaccountid": "00b488b2-59ba-4987-88ca-0a70957cf9de",
+                    "tenant_onboarding_url": "https://saas-manager.cfapps.eu10.hana.ondemand.com",
+                    "tenantid": "00b488b2-59ba-4987-88ca-0a70957cf9de",
+                    "tenantmode": "dedicated",
+                    "uaadomain": "authentication.eu10.hana.ondemand.com",
+                    "url": "https://30db1073trial.authentication.eu10.hana.ondemand.com",
+                    "verificationkey": "-----BEGIN PUBLIC KEY-----MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA387Bgq0ZJdVZTEdh369iSGzJ4+g6z9jyKstxBj9odhViyR3b3Loqu/msWyk/fHA2/U2P56e6ACqbfQLmzctstiwhWFKNJumhf5KM8utd4iicyaUBeqqMAheFv/ogX/DFI86dcDqZO1Ai1Rx1hiBA/f9JLxzb0z9YBT7VSnqnCWYaL2MmuCN3A6USadFNai7Tv0tz5mouQ6iuDUObb9qM85R41aDYLnaQ3YcgVfus7WyGHhVMTwxB+lKKGvlyP400p6lOB3XE0TJyfSO4IeFZgdrGvMRqOk1vP3COSvZcLYcdnCu1U1ruZZicjRjHRBnI524aZQk8A8uPgE8Jugli/wIDAQAB-----END PUBLIC KEY-----",
+                    "xsappname": "xsuaa",
+                    "zoneid": "00b488b2-59ba-4987-88ca-0a70957cf9de"
+                },
+                "instance_guid": "95836d69-ef1d-4718-be4c-84dff85a78b3",
+                "instance_name": "saas-registry",
+                "label": "saas-registry",
+                "name": "saas-registry",
+                "plan": "application",
+                "provider": null,
+                "syslog_drain_url": null,
+                "tags": [
+                    "SaaS"
+                ],
+                "volume_mounts": []
+            }
+        ],
+        "xsuaa": [
+            {
+                "binding_guid": "acd4b636-8e5c-4a24-bdb3-b7892b242118",
+                "binding_name": null,
+                "credentials": {
+                    "apiurl": "https://api.authentication.eu10.hana.ondemand.com",
+                    "clientid": "sb-xsuaa!b90201",
+                    "clientsecret": "SsvH9mocIfni17xMnVoU3bqvUoA=",
+                    "credential-type": "instance-secret",
+                    "identityzone": "30db1073trial",
+                    "identityzoneid": "00b488b2-59ba-4987-88ca-0a70957cf9de",
+                    "sburl": "https://internal-xsuaa.authentication.eu10.hana.ondemand.com",
+                    "subaccountid": "00b488b2-59ba-4987-88ca-0a70957cf9de",
+                    "tenantid": "00b488b2-59ba-4987-88ca-0a70957cf9de",
+                    "tenantmode": "shared",
+                    "trustedclientidsuffix": "|xsuaa!b90201",
+                    "uaadomain": "authentication.eu10.hana.ondemand.com",
+                    "url": "https://30db1073trial.authentication.eu10.hana.ondemand.com",
+                    "verificationkey": "-----BEGIN PUBLIC KEY-----MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA387Bgq0ZJdVZTEdh369iSGzJ4+g6z9jyKstxBj9odhViyR3b3Loqu/msWyk/fHA2/U2P56e6ACqbfQLmzctstiwhWFKNJumhf5KM8utd4iicyaUBeqqMAheFv/ogX/DFI86dcDqZO1Ai1Rx1hiBA/f9JLxzb0z9YBT7VSnqnCWYaL2MmuCN3A6USadFNai7Tv0tz5mouQ6iuDUObb9qM85R41aDYLnaQ3YcgVfus7WyGHhVMTwxB+lKKGvlyP400p6lOB3XE0TJyfSO4IeFZgdrGvMRqOk1vP3COSvZcLYcdnCu1U1ruZZicjRjHRBnI524aZQk8A8uPgE8Jugli/wIDAQAB-----END PUBLIC KEY-----",
+                    "xsappname": "xsuaa!b90201",
+                    "zoneid": "00b488b2-59ba-4987-88ca-0a70957cf9de"
+                },
+                "instance_guid": "781365a2-fd41-48d8-89ef-897c32597784",
+                "instance_name": "xsuaa",
+                "label": "xsuaa",
+                "name": "xsuaa",
+                "plan": "broker",
+                "provider": null,
+                "syslog_drain_url": null,
+                "tags": [
+                    "xsuaa"
+                ],
+                "volume_mounts": []
+            }
+        ]
+    }
+}
