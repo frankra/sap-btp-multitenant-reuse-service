@@ -5,13 +5,22 @@ xsenv.loadEnv();
 const services = xsenv.getServices({ "postgresql-db": { name: 'postgresql' } })
 const pgCredentials = services['postgresql-db'];
 
-const pool = new Pool({
+const config = {
     user: pgCredentials.username,
     host: pgCredentials.hostname,
     password: pgCredentials.password,
     port: pgCredentials.port,
     database: pgCredentials.dbname,
-})
+}
+
+// Do not use SSL for localhost
+config.ssl = process.env.LOCAL_DEV ? undefined : {
+    rejectUnauthorized: false,
+    ca: pgCredentials.sslrootcert,
+    cert: pgCredentials.sslcert
+}
+
+const pool = new Pool(config);
 
 //Create tables
 pool.query(`
@@ -25,7 +34,7 @@ pool.query(`
         PRIMARY KEY (id)
     );
 `, (err, res) => {
-    if (err){
+    if (err) {
         console.error(`Error creating schema`, err);
     }
 })

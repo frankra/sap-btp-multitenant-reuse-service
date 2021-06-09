@@ -1,4 +1,5 @@
 {   
+    "LOCAL_DEV" : "true",
     "PORT": 3000,
     "VCAP_SERVICES": {
         "postgresql-db": [
