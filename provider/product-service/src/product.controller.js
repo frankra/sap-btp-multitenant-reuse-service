@@ -1,12 +1,11 @@
 const { middleware } = require('./auth');
 
-const start = (app, pool) => {
+const start = (app, db) => {
 
     app.get('/api/products', middleware, async (req, res) => {
-        const result = await pool.query(`
-            SELECT * FROM prod.products
-            WHERE tenant_id = $1;
-        `, [req.tenantId]);
+        const result = await db.query(req.tenantId, `
+            SELECT * FROM poc.products;
+        `);
 
         res
             .status(200)
@@ -15,8 +14,8 @@ const start = (app, pool) => {
 
     app.post('/api/products', middleware, async (req, res) => {
         const product = req.body;
-        const result = await pool.query(`
-            INSERT INTO prod.products (
+        await db.query(req.tenantId, `
+            INSERT INTO poc.products (
                 name,
                 price,
                 tenant_id
@@ -38,19 +37,17 @@ const start = (app, pool) => {
 
     app.put('/api/products/:id', middleware, async (req, res) => {
         const product = req.body;
-        const result = await pool.query(`
-            UPDATE prod.products SET
+        await db.query(req.tenantId, `
+            UPDATE poc.products SET
                 name = $1,
                 price = $2
             WHERE 
-                id = $3 AND
-                tenant_id = $4;
+                id = $3;
         `, [
             product.name,
             product.price,
             //key
-            req.params.id,
-            req.tenantId
+            req.params.id
         ]);
 
         res
@@ -59,14 +56,12 @@ const start = (app, pool) => {
     });
 
     app.delete('/api/products/:id', middleware, async (req, res) => {
-        await pool.query(`
-            DELETE FROM prod.products 
+        await db.query(req.tenantId, `
+            DELETE FROM poc.products 
             WHERE 
-                id = $1 AND
-                tenant_id = $1;
+                id = $1;
         `, [
-            req.params.id,
-            req.tenantId
+            req.params.id
         ]);
 
         res
